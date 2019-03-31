@@ -1,0 +1,25 @@
+<mat-sidenav-container>
+    <mat-sidenav opened #sidenav [(opened)]="opened" mode="push" (opened)="log('Opened')" (closed)="log('Closed')">
+        <div style="height: 150px; background-color: indianred; ">
+
+        </div>
+        <mat-nav-list>
+            <a mat-list-item routerLink="profile" (click)="sidenav.toggle()">
+                <mat-icon>supervised_user_circle</mat-icon>
+                Profile</a>
+            <a mat-list-item routerLink="book" (click)="sidenav.toggle()">
+                <mat-icon>library_books</mat-icon>
+                Books</a>
+            <a mat-list-item routerLink="order" (click)="sidenav.toggle()">
+                <mat-icon>list_alt</mat-icon>
+                Orders</a>
+            <a mat-list-item routerLink="notification" (click)="sidenav.toggle()">
+                <mat-icon>notification_important</mat-icon>
+                Notifications</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-app-tool-bar (onToggle)="sidenav.toggle()"></app-app-tool-bar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

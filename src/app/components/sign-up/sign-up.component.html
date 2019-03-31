@@ -1,0 +1,87 @@
+<div class="container-1">
+
+  <div class="box-3">
+
+  </div>
+
+  <div class="box-3 p2">
+    <mat-card>
+      <mat-card-header>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="p2">
+          <mat-progress-bar mode="indeterminate" *ngIf="submitted"></mat-progress-bar>
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="example-container">
+            <!---User name-->
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="User name" name="email" type="text" formControlName="name">
+            </mat-form-field>
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">User name  is required</div>
+            </div>
+
+
+            <!--Email-->
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Email" name="email" type="email" formControlName="email">
+            </mat-form-field>
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.email">Invalid email</div>
+              <div *ngIf="f.email.errors.required">Email is required</div>
+            </div>
+
+
+
+
+            <!--Phone number-->
+            <mat-form-field appearance="outline">
+              <mat-label>Phone number</mat-label>
+              <input matInput placeholder="+249999999909" name="phone_number" type="number" formControlName="phone_number">
+            </mat-form-field>
+            <div *ngIf="submitted && f.phone_number.errors" class="invalid-feedback">
+              <div *ngIf="f.phone_number.errors.required">Phone number is required</div>
+              <div *ngIf="f.phone_number.errors.minlength">Phone number only 10 numbers</div>
+
+            </div>
+
+
+            <!--Password -->
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput placeholder="Password" name="password" type="password"
+                     formControlName="password">
+            </mat-form-field>
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+              <div *ngIf="f.password.errors.minlength">Password min length 6</div>
+            </div>
+
+<!--password confirmations-->
+            <mat-form-field appearance="outline">
+              <mat-label>Password Confirmation</mat-label>
+              <input matInput placeholder="Password Confirmation" name="password_confirm" type="password"
+                     formControlName="password_confirm">
+            </mat-form-field>
+            <div *ngIf="submitted && f.password_confirm.errors" class="invalid-feedback">
+              <div *ngIf="f.password_confirm.errors.required">Password Confirmation is required</div>
+              <div *ngIf="f.password_confirm.errors.minlength">Password Confirmation min length 6</div>
+            </div>
+
+            <button mat-raised-button color="primary" type="submit">Sign Up</button>
+            <a mat-button color="accent" routerLink="/sign_in" >Already have account ? sing in</a>
+          </div>
+
+        </form>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="box-3">
+
+  </div>
+</div>
