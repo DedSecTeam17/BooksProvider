@@ -25,6 +25,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AddBookComponent } from './components/book/add-book/add-book.component';
 import { AllBooksComponent } from './components/book/all-books/all-books.component';
 import { UpdateBookComponent } from './components/book/update-book/update-book.component';
+import { CreateProfileComponent } from './components/profile/create-profile/create-profile.component';
+import { UpdateProfileComponent } from './components/profile/update-profile/update-profile.component';
+import { ProfileDataComponent } from './components/profile/profile-data/profile-data.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { UpdateBookComponent } from './components/book/update-book/update-book.c
     AddBookComponent,
     AllBooksComponent,
     UpdateBookComponent,
+    CreateProfileComponent,
+    UpdateProfileComponent,
+    ProfileDataComponent,
 
   ],
   imports: [

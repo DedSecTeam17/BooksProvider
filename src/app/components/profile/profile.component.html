@@ -1,3 +1,38 @@
-<p>
-  profile works!
-</p>
+<div class="row " style="background-color: #ecf0f1">
+
+
+    <div class="col-md-4 offset-4">
+        <div class="card m-2">
+            <div class="card-body">
+                <div class="text-center">
+                    <img src="https://via.placeholder.com/600/#e8ecf1" width="70" height="70"
+                         class="img-fluid   rounded-circle m-2" alt="...">
+                    <div class="row m-1">
+                        <div class="col-md-12">
+                            <p class="text text-dark">Mohammed Elmain</p>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="row m-1">
+                        <div class="col-md-6">
+                            <button class="btn btn-dark btn-sm" routerLink="update">Update</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-dark btn-sm" routerLink="index">MyProfile</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-6 offset-3">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>

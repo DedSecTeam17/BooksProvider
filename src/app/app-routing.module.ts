@@ -11,6 +11,8 @@ import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {AddBookComponent} from './components/book/add-book/add-book.component';
 import {AllBooksComponent} from './components/book/all-books/all-books.component';
 import {UpdateBookComponent} from './components/book/update-book/update-book.component';
+import {UpdateProfileComponent} from './components/profile/update-profile/update-profile.component';
+import {ProfileDataComponent} from './components/profile/profile-data/profile-data.component';
 
 const routes: Routes = [
     {
@@ -36,7 +38,15 @@ const routes: Routes = [
         ]
     },
     {
-        path:'profile',component:ProfileComponent
+        path:'profile',component:ProfileComponent,
+        children:[
+            {
+                path:'update',component:UpdateProfileComponent
+            },
+            {
+                path:'index',component:ProfileDataComponent
+            }
+        ]
     },
     {
         path:'notification',component:NotificationsComponent
