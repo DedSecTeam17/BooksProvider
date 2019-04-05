@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
 
+
+  toggled : boolean=true;
   constructor() { }
 
   ngOnInit() {
   }
+
+
+  onToggle(){
+    this.toggled=!this.toggled;
+    console.log(this.toggled);
+
+  }
+
+
 
 }

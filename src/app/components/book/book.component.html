@@ -1,3 +1,26 @@
-<p>
-  book works!
-</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron m-3">
+            <p>Welcome to your books</p>
+            <button class="btn btn-success" routerLink="create">Add new book</button>
+        </div>
+
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link"  routerLink="create">Add Book</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  routerLink="index">All Books</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Books Statistics</a>
+            </li>
+
+        </ul>
+        <router-outlet></router-outlet>
+
+    </div>
+</div>
+
+
+<!--<button  mat-fab  id="add-button" (click)="addBook()"><mat-icon >add</mat-icon></button>-->

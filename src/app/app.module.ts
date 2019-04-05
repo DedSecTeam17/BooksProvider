@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 // import animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // import buttons and check box
-import {MatButtonModule, MatCheckboxModule,MatToolbarModule,MatIconModule,MatMenuModule,MatFormFieldModule,MatSelectModule,MatListModule,MatSidenavModule,MatCardModule,MatGridListModule,MatInputModule,MatProgressSpinnerModule,MatProgressBarModule} from '@angular/material';
+import {MatNativeDateModule,MatDatepickerModule,MatDialogModule,MatButtonModule, MatCheckboxModule,MatToolbarModule,MatIconModule,MatMenuModule,MatFormFieldModule,MatSelectModule,MatListModule,MatSidenavModule,MatCardModule,MatGridListModule,MatInputModule,MatProgressSpinnerModule,MatProgressBarModule} from '@angular/material';
 import { AppToolBarComponent } from './components/app-tool-bar/app-tool-bar.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
@@ -22,6 +22,9 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import {FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddBookComponent } from './components/book/add-book/add-book.component';
+import { AllBooksComponent } from './components/book/all-books/all-books.component';
+import { UpdateBookComponent } from './components/book/update-book/update-book.component';
 
 @NgModule({
   declarations: [
@@ -39,10 +42,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     NotFoundComponentComponent,
     SideNavComponent,
     NotificationsComponent,
+    AddBookComponent,
+    AllBooksComponent,
+    UpdateBookComponent,
 
-
-
-      
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,10 @@ import { ReactiveFormsModule } from '@angular/forms';
       FormsModule,
       ReactiveFormsModule,
       MatProgressSpinnerModule,
-      MatProgressBarModule
+      MatProgressBarModule,
+      MatDialogModule,
+      MatDatepickerModule,
+      MatNativeDateModule
 
   ],
   providers: [],

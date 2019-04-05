@@ -1,14 +1,8 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>Book Providers</span>
 
-    <span class="example-spacer"></span>
 
-    <button mat-button [matMenuTriggerFor]="menu"><mat-icon>arrow_drop_down</mat-icon></button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item><mat-icon>supervised_user_circle</mat-icon></button>
-      <button mat-menu-item><mat-icon>logout</mat-icon></button>
-    </mat-menu>
-    <button mat-button (click)="toggle()"><mat-icon>menu</mat-icon></button>
-  </mat-toolbar-row>
-</mat-toolbar>
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+  <a class="navbar-brand" href="#">Books Providers</a>
+
+  <button class="btn btn-light " (click)="toggle()"><i class="fas fa-bars"></i></button>
+
+</nav>

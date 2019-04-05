@@ -8,6 +8,9 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {NotificationsComponent} from './components/notifications/notifications.component';
 import {OrderComponent} from './components/order/order.component';
 import {SignUpComponent} from './components/sign-up/sign-up.component';
+import {AddBookComponent} from './components/book/add-book/add-book.component';
+import {AllBooksComponent} from './components/book/all-books/all-books.component';
+import {UpdateBookComponent} from './components/book/update-book/update-book.component';
 
 const routes: Routes = [
     {
@@ -20,7 +23,17 @@ const routes: Routes = [
         path:'home',component:HomeComponent
     },
     {
-        path:'book',component:BookComponent
+        path:'book',component:BookComponent,children:[
+            {
+                path:'create',component:AddBookComponent
+            },
+            {
+                path:'index',component:AllBooksComponent
+            },
+            {
+                path:'update',component:UpdateBookComponent
+            }
+        ]
     },
     {
         path:'profile',component:ProfileComponent
