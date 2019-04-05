@@ -13,6 +13,8 @@ import {AllBooksComponent} from './components/book/all-books/all-books.component
 import {UpdateBookComponent} from './components/book/update-book/update-book.component';
 import {UpdateProfileComponent} from './components/profile/update-profile/update-profile.component';
 import {ProfileDataComponent} from './components/profile/profile-data/profile-data.component';
+import {ShowOrderComponent} from './components/order/show-order/show-order.component';
+import {AllOrdersComponent} from './components/order/all-orders/all-orders.component';
 
 const routes: Routes = [
     {
@@ -52,10 +54,19 @@ const routes: Routes = [
         path:'notification',component:NotificationsComponent
     },
     {
-        path:'order',component:OrderComponent
+        path:'order',component:OrderComponent,
+        children:[
+            {
+                path:'index',component:AllOrdersComponent
+            },
+            {
+                path:'show/:order_id',component:ShowOrderComponent
+            }
+        ]
     },
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: '**', component: NotFoundComponentComponent },
+
 ];
 
 @NgModule({

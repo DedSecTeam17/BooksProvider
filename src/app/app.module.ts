@@ -28,6 +28,8 @@ import { UpdateBookComponent } from './components/book/update-book/update-book.c
 import { CreateProfileComponent } from './components/profile/create-profile/create-profile.component';
 import { UpdateProfileComponent } from './components/profile/update-profile/update-profile.component';
 import { ProfileDataComponent } from './components/profile/profile-data/profile-data.component';
+import { AllOrdersComponent } from './components/order/all-orders/all-orders.component';
+import { ShowOrderComponent } from './components/order/show-order/show-order.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { ProfileDataComponent } from './components/profile/profile-data/profile-
     CreateProfileComponent,
     UpdateProfileComponent,
     ProfileDataComponent,
+    AllOrdersComponent,
+    ShowOrderComponent,
 
   ],
   imports: [

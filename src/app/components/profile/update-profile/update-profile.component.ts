@@ -16,6 +16,7 @@ export class UpdateProfileComponent implements OnInit {
         this.registerForm = this.formBuilder.group({
             email: ['',[ Validators.required,Validators.email]],
             name: ['',[ Validators.required]],
+            image: [' ',[Validators.required]],
             phone_number:['', [Validators.required,Validators.minLength(10)]]
         });
     }

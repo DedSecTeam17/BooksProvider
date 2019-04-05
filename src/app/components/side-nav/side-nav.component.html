@@ -1,27 +1,31 @@
-<div class="d-flex" id="wrapper" [ngClass]="{'toggled': toggled==true}">
 
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper"   >
-        <div class="sidebar-heading">Start Bootstrap </div>
-        <div class="list-group list-group-flush">
-            <a routerLink="/profile/index" class="list-group-item list-group-item-action bg-light"><i class="fas fa-user">Profile</i></a>
-            <a routerLink="/book/index" class="list-group-item list-group-item-action bg-light"><i class="fas fa-book-reader">Books</i></a>
-            <a routerLink="/notification" class="list-group-item list-group-item-action bg-light"><i class="fas fa-bell">Notifications</i></a>
-            <a routerLink="/order" class="list-group-item list-group-item-action bg-light"><i class="fas fa-list">Orders</i></a>
-            <a routerLink="/#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-sign-out-alt">Sign out</i></a>
+
+
+    <div class="d-flex" id="wrapper" [ngClass]="{'toggled': toggled==true}">
+
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper"   >
+            <div class="sidebar-heading">Start Bootstrap </div>
+            <div class="list-group list-group-flush">
+                <a (click)="onToggle()" routerLink="/profile/index" class="list-group-item list-group-item-action bg-light"><i class="fas fa-user">Profile</i></a>
+                <a (click)="onToggle()" routerLink="/book/index" class="list-group-item list-group-item-action bg-light"><i class="fas fa-book-reader">Books</i></a>
+                <a (click)="onToggle()" routerLink="/notification" class="list-group-item list-group-item-action bg-light"><i class="fas fa-bell">Notifications</i></a>
+                <a (click)="onToggle()" routerLink="/order/index" class="list-group-item list-group-item-action bg-light"><i class="fas fa-list">Orders</i></a>
+                <a (click)="onToggle()" routerLink="/#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-sign-out-alt">Sign out</i></a>
+            </div>
         </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
+        <!-- /#sidebar-wrapper -->
 
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
 
-  <app-app-tool-bar (onToggle)="onToggle()"></app-app-tool-bar>
+            <div class="container-fluid">
+                <app-app-tool-bar (onToggle)="onToggle()"></app-app-tool-bar>
 
-        <div class="container-fluid">
             <router-outlet></router-outlet>
         </div>
+
     </div>
 
-</div>
 
+</div>
