@@ -9,9 +9,27 @@ import {Router} from '@angular/router';
 
 export class AllBooksComponent implements OnInit {
 
-  constructor(private  router : Router) { }
 
+
+  books=[
+      {book:1},
+      {book:2},
+      {book:3},
+      {book:4},
+      {book:5},
+      {book:6},
+      {book:7},
+  ];
+  constructor(private  router : Router) { }
+    selected = 5;
+    hovered = 0;
+    readonly = true;
   ngOnInit() {
+  }
+
+
+  showBookDetail(book_id){
+      this.router.navigateByUrl(`/book/show/${book_id}`);
   }
 
 

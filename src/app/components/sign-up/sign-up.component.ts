@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
+import {UserSessionService} from '../../services/user-session.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,9 +11,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
 
+    err : string;
     registerForm: FormGroup;
     submitted = false;
-    constructor(private formBuilder: FormBuilder) { }
+    constructor(private formBuilder: FormBuilder,private  authService : AuthService,private  session : UserSessionService, private  router : Router) { }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
@@ -18,7 +22,6 @@ export class SignUpComponent implements OnInit {
             name: ['',[ Validators.required]],
             password: ['', [Validators.required,Validators.minLength(6)]],
             password_confirm:['', [Validators.required,Validators.minLength(6)]],
-            phone_number:['', [Validators.required,Validators.minLength(10)]]
         });
     }
 
@@ -33,7 +36,17 @@ export class SignUpComponent implements OnInit {
             return;
         }
 
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+        this.authService.signUp(this.registerForm.value).subscribe((respone)=>{
+            console.log(respone)
+            this.submitted = false;
+            this.router.navigateByUrl('/sign_in');
+
+        },(err)=>{
+            this.err=err.error;
+            console.log(this.err)
+            this.submitted = false;
+
+        })
     }
 
 }

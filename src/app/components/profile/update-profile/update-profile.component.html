@@ -1,70 +1,90 @@
 <div class="card m-2">
-  <div class="card-body">
-    <div class="needs-validation" novalidate>
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="card-body">
+        <div class="needs-validation" novalidate>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
 
-          <div class="form-group">
-              <label>Profile Image</label>
-              <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text">Upload Your Profile Image</span>
-                  </div>
-                  <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="inputGroupFile01"
-                             formControlName="image"
-                             [ngClass]="{ 'is-invalid': submitted && f.image.errors }">
-                      <label class="custom-file-label" for="inputGroupFile01"></label>
-                      <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
-                          <div *ngIf="f.image.errors.required">Book Image is required</div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+                <div class="form-group">
+                    <label>Profile Image</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Upload Your Profile Image</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                   formControlName="image"
+                                   [ngClass]="{ 'is-invalid': submitted && f.image.errors }">
+                            <label class="custom-file-label" for="inputGroupFile01"></label>
+                            <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+                                <div *ngIf="f.image.errors.required">Book Image is required</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="form-group">
-          <label for="name">User name</label>
-          <input class="form-control" placeholder="Email" id="name" name="name" type="text"
-                 formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
-          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-            <div *ngIf="f.name.errors.required">User name is required</div>
-          </div>
-        </div>
-        <!---->
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input class="form-control" placeholder="Email" id="exampleInputEmail1" name="email"
-                 type="email" formControlName="email"
-                 [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-            <div *ngIf="f.email.errors.email">Invalid email</div>
-            <div *ngIf="f.email.errors.required">Email is required</div>
-          </div>
-        </div>
-
-
-        <!--PHONE NUMBER-->
-
-        <div class="form-group">
-          <label for="phone_number">Phone number</label>
-          <input class="form-control" placeholder="090xxxxxxxxx" id="phone_number" name="phone_number"
-                 type="number" formControlName="phone_number"
-                 [ngClass]="{ 'is-invalid': submitted && f.phone_number.errors }">
-          <div *ngIf="submitted && f.phone_number.errors" class="invalid-feedback">
-            <div *ngIf="f.phone_number.errors.required">Phone number is required</div>
-          </div>
-        </div>
-        <!---->
+                <div class="form-group">
+                    <label for="name">User name</label>
+                    <input class="form-control" placeholder="Email" id="name" name="name" type="text"
+                           formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.name.errors.required">User name is required</div>
+                    </div>
+                </div>
+                <!---->
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input class="form-control" placeholder="Email" id="exampleInputEmail1" name="email"
+                           type="email" formControlName="email"
+                           [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.email">Invalid email</div>
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                    </div>
+                </div>
 
 
+                <!--PHONE NUMBER-->
 
-        <button type="submit" class="btn btn-primary btn-block  text-center">
+                <div class="form-group">
+                    <label for="phone_number">Phone number</label>
+                    <input class="form-control" placeholder="090xxxxxxxxx" id="phone_number" name="phone_number"
+                           type="number" formControlName="phone_number"
+                           [ngClass]="{ 'is-invalid': submitted && f.phone_number.errors }">
+                    <div *ngIf="submitted && f.phone_number.errors" class="invalid-feedback">
+                        <div *ngIf="f.phone_number.errors.required">Phone number is required</div>
+                    </div>
+                </div>
+                <!---->
+
+
+                <div class="form-group">
+                    <label for="about_you">About You</label>
+                    <input class="form-control" placeholder="About you" id="about_you" name="about_you"
+                           type="text" formControlName="about_you"
+                           [ngClass]="{ 'is-invalid': submitted && f.about_you.errors }">
+                    <div *ngIf="submitted && f.about_you.errors" class="invalid-feedback">
+                        <div *ngIf="f.about_you.errors.required">About you is required</div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="job">Job</label>
+                    <input class="form-control" placeholder="job" id="job" name="job"
+                           type="text" formControlName="job"
+                           [ngClass]="{ 'is-invalid': submitted && f.job.errors }">
+                    <div *ngIf="submitted && f.job.errors" class="invalid-feedback">
+                        <div *ngIf="f.job.errors.required">job is required</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block  text-center">
                             <span *ngIf="submitted" class="spinner-border spinner-border-sm" role="status">
                             </span>
-          <span *ngIf="!submitted">Update</span>
-        </button>
-      </form>
-    </div>
+                    <span>Update</span>
+                </button>
+            </form>
+        </div>
 
-  </div>
+    </div>
 </div>

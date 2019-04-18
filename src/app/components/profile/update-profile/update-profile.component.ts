@@ -17,6 +17,8 @@ export class UpdateProfileComponent implements OnInit {
             email: ['',[ Validators.required,Validators.email]],
             name: ['',[ Validators.required]],
             image: [' ',[Validators.required]],
+            about_you: [' ',[Validators.required]],
+            job: [' ',[Validators.required]],
             phone_number:['', [Validators.required,Validators.minLength(10)]]
         });
     }

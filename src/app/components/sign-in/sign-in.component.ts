@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
+import {UserSessionService} from '../../services/user-session.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,10 +12,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SignInComponent implements OnInit {
     registerForm: FormGroup;
     submitted = false;
-  constructor(private formBuilder: FormBuilder) { }
 
-
-
+  err:null;
+  constructor(private  router : Router ,private formBuilder: FormBuilder, private  authService: AuthService,private  session:UserSessionService) { }
 
 
   ngOnInit() {
@@ -26,15 +28,22 @@ export class SignInComponent implements OnInit {
 
 
     onSubmit() {
+      console.log(this.registerForm)
 
         this.submitted = true;
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
+       this.authService.SingIn(this.registerForm.value).subscribe((respone)=>{
+           console.log(respone)
+           this.submitted = false;
+           this.session.setAccessToken(respone.user_token);
+           this.session.saveAccessToken();
+           this.router.navigateByUrl('/home');
 
-            return;
-        }
+       },(err)=>{
+           this.err=err.error;
+           console.log(this.err)
+           this.submitted = false;
 
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+       })
     }
 
 }

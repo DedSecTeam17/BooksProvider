@@ -1,3 +1,22 @@
-<p>
-  notifications works!
-</p>
+<div class="row">
+    <div class="col-md-6 offset-3">
+
+        <ul class="list-group m-2">
+            <li class="list-group-item" *ngFor="let notifaction of notfications">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="https://via.placeholder.com/600/#e8ecf1" width="50" height="50"
+                             class="img-fluid   rounded-circle m-2" alt="...">
+                    </div>
+                    <div class="col-md-10 ">
+                        <p class="p-2">New order arrived for one of your book</p>
+                        <button class="p-2 btn btn-outline-dark" routerLink="chat/1">Chat <i class="fab fa-facebook-messenger"></i></button>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

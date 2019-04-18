@@ -30,6 +30,10 @@ import { UpdateProfileComponent } from './components/profile/update-profile/upda
 import { ProfileDataComponent } from './components/profile/profile-data/profile-data.component';
 import { AllOrdersComponent } from './components/order/all-orders/all-orders.component';
 import { ShowOrderComponent } from './components/order/show-order/show-order.component';
+import  {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ShowBookComponent } from './components/book/show-book/show-book.component';
+import { ChatComponent } from './components/notifications/chat/chat.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -55,6 +59,8 @@ import { ShowOrderComponent } from './components/order/show-order/show-order.com
     ProfileDataComponent,
     AllOrdersComponent,
     ShowOrderComponent,
+    ShowBookComponent,
+    ChatComponent,
 
   ],
   imports: [
@@ -79,7 +85,9 @@ import { ShowOrderComponent } from './components/order/show-order/show-order.com
       MatProgressBarModule,
       MatDialogModule,
       MatDatepickerModule,
-      MatNativeDateModule
+      MatNativeDateModule,
+      NgbModule,
+      HttpClientModule
 
   ],
   providers: [],

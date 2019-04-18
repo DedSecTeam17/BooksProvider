@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationsComponent implements OnInit {
 
+
+
+  notfications=[{id:1},{id:1},{id:1},{id:1},{id:1},{id:1},{id:1},{id:1},{id:1}];
+
   constructor() { }
 
   ngOnInit() {

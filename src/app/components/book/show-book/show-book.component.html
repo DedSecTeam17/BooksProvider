@@ -1,0 +1,94 @@
+<div class="row m-3">
+    <div class="col-md-6 offset-3">
+
+        <div class="card">
+            <div class="card-body text-center">
+                <img  src="https://via.placeholder.com/600/#e8ecf1" width="70%" class="img-thumbnail justify-content-center">
+                <p>Author</p>
+                <p>Title</p>
+                <p class="badge badge-info">Category</p>
+                <p class="badge badge-warning">$35-US</p>
+                <ngb-rating [(rate)]="selected" [readonly]="readonly"></ngb-rating>
+                <p>2019-8-23</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <textarea class="form-control"></textarea>
+                    </div>
+                    <button class="btn btn-outline-dark">Comment</button>
+                </form>
+            </div>
+        </div>
+        <ul class="list-group ">
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="https://via.placeholder.com/600/#e8ecf1" width="70" height="70"
+                             class="img-fluid   rounded-circle m-2" alt="...">
+                    </div>
+                    <div class="col-md-9" id="comment">
+                        <p style="color: gray">@Mohammed Elamin</p>
+                        <p style="font-size: small; color: gray">I like This Book Very much i recommend this <3</p>
+                        <button class="btn btn-light">Replys</button>
+                        <div class="ml-3">
+                           <div class="row" >
+                               <div class="col-md-3">
+                                   <img src="https://via.placeholder.com/600/#e8ecf1" width="70" height="70"
+                                        class="img-fluid   rounded-circle m-2" alt="...">
+                               </div>
+                               <div class="col-md-9">
+                                   <p style="color: gray">@Mohammed Elamin</p>
+                                   <p style="font-size: small; color: gray">Replya on this</p>
+                               </div>
+                           </div>
+
+                        </div>
+                        <hr>
+                        <div class="text-right">
+                            <form>
+                                <div class="form-group">
+                                    <input *ngIf="!showReplayFiled" class="form-control" name="replay">
+                                </div>
+                                <button *ngIf="showReplayFiled" (click)="onReplay()" class="btn btn-outline-warning">
+                                    Replay
+                                </button>
+
+                                <div class="form-inline justify-content-between">
+                                    <button (click)="onSave()" class="btn btn-outline-info" *ngIf="!showReplayFiled">
+                                        Save
+                                    </button>
+                                    <button (click)="onCancel()" class="btn btn-outline-dark" *ngIf="!showReplayFiled">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="https://via.placeholder.com/600/#e8ecf1" width="70" height="70"
+                             class="img-fluid   rounded-circle m-2" alt="...">
+                    </div>
+                    <div class="col-md-9">
+                        <p style="color: gray">@Mohammed Elamin</p>
+                        <p style="font-size: small; color: gray">I like This Book Very much i recommend this <3</p>
+                    </div>
+
+                </div>
+            </li>
+
+
+        </ul>
+    </div>
+
+</div>

@@ -15,16 +15,29 @@ import {UpdateProfileComponent} from './components/profile/update-profile/update
 import {ProfileDataComponent} from './components/profile/profile-data/profile-data.component';
 import {ShowOrderComponent} from './components/order/show-order/show-order.component';
 import {AllOrdersComponent} from './components/order/all-orders/all-orders.component';
+import {ShowBookComponent} from './components/book/show-book/show-book.component';
+import {ChatComponent} from './components/notifications/chat/chat.component';
+import {AuthGuardService} from './services/auth-guard.service';
+import {BeforeLoggedInGuardService} from './services/before-logged-in-guard.service';
+import {SignPasswordResetRequestComponent} from './components/sign-password-reset-request/sign-password-reset-request.component';
+import {SignPasswordResetResponseComponent} from './components/sign-password-reset-response/sign-password-reset-response.component';
 
 const routes: Routes = [
     {
-      path:'sign_in',component:SignInComponent
+      path:'sign_in',component:SignInComponent,canActivate:[BeforeLoggedInGuardService]
     },
     {
-        path:'sign_up',component:SignUpComponent
+        path:'sign_up',component:SignUpComponent,canActivate:[BeforeLoggedInGuardService]
+    },
+    //change_password
+    {
+        path:'password_reset',component:SignPasswordResetRequestComponent,canActivate:[BeforeLoggedInGuardService]
     },
     {
-        path:'home',component:HomeComponent
+        path:'change_password',component:SignPasswordResetResponseComponent,canActivate:[BeforeLoggedInGuardService]
+    },
+    {
+        path:'home',component:HomeComponent,canActivate: [AuthGuardService]
     },
     {
         path:'book',component:BookComponent,children:[
@@ -36,8 +49,12 @@ const routes: Routes = [
             },
             {
                 path:'update',component:UpdateBookComponent
+            },
+            {
+                path:'show/:book_id',component:ShowBookComponent
             }
-        ]
+        ],canActivate: [AuthGuardService]
+
     },
     {
         path:'profile',component:ProfileComponent,
@@ -48,13 +65,18 @@ const routes: Routes = [
             {
                 path:'index',component:ProfileDataComponent
             }
+        ],canActivate: [AuthGuardService]
+    },
+    {
+        path:'notification',component:NotificationsComponent,canActivate: [AuthGuardService],
+        children:[
+            {
+                path:'chat/:notification_id',component:ChatComponent
+            }
         ]
     },
     {
-        path:'notification',component:NotificationsComponent
-    },
-    {
-        path:'order',component:OrderComponent,
+        path:'order',component:OrderComponent,canActivate: [AuthGuardService],
         children:[
             {
                 path:'index',component:AllOrdersComponent
@@ -64,7 +86,7 @@ const routes: Routes = [
             }
         ]
     },
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: '', redirectTo: 'sign_in', pathMatch: 'full' },
     { path: '**', component: NotFoundComponentComponent },
 
 ];

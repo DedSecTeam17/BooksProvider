@@ -4,14 +4,15 @@
     <div class="d-flex" id="wrapper" [ngClass]="{'toggled': toggled==true}">
 
         <!-- Sidebar -->
-        <div class="bg-light border-right" id="sidebar-wrapper"   >
+        <div *ngIf="session.isAuth()"  class="bg-light border-right" id="sidebar-wrapper"   >
             <div class="sidebar-heading">Start Bootstrap </div>
             <div class="list-group list-group-flush">
                 <a (click)="onToggle()" routerLink="/profile/index" class="list-group-item list-group-item-action bg-light"><i class="fas fa-user">Profile</i></a>
                 <a (click)="onToggle()" routerLink="/book/index" class="list-group-item list-group-item-action bg-light"><i class="fas fa-book-reader">Books</i></a>
                 <a (click)="onToggle()" routerLink="/notification" class="list-group-item list-group-item-action bg-light"><i class="fas fa-bell">Notifications</i></a>
                 <a (click)="onToggle()" routerLink="/order/index" class="list-group-item list-group-item-action bg-light"><i class="fas fa-list">Orders</i></a>
-                <a (click)="onToggle()" routerLink="/#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-sign-out-alt">Sign out</i></a>
+                <a  (click)="logOut()" routerLink="/sign_in" class="list-group-item list-group-item-action bg-light"><i class="fas fa-sign-out-alt">Log out</i></a>
+
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
