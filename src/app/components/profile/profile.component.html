@@ -5,13 +5,23 @@
         <div class="card m-2">
             <div class="card-body">
                 <div class="text-center">
-                    <img src="https://via.placeholder.com/600/#e8ecf1" width="70" height="70"
-                         class="img-fluid   rounded-circle m-2" alt="...">
+                    <img *ngIf="load_image_path===false"  [src]="image_path" width="70" height="70"
+                         class="  rounded-circle m-2" alt="...">
+                    <div class="text-center" *ngIf="load_image_path">
+                        <span    class="spinner-border spinner-border-sm" role="status"> </span>
+
+                    </div>
+
                     <div class="row m-1">
                         <div class="col-md-12">
-                            <p class="text text-dark">Mohammed Elmain</p>
+                            <p class="text text-dark">{{user_name}}</p>
+                            <button (click)="file.click()" class="btn btn-info btn-block"><i *ngIf="upload_image===false" class="fa fa-camera"></i>
+                                <span  *ngIf="upload_image"   class="spinner-border spinner-border-sm" role="status"> </span>
+                            </button>
+                            <input #file type="file" hidden  name="profile_image"  (change)="handleFileInput($event.target.files)">
                         </div>
                     </div>
+                    <hr>
                     <!---->
                     <div class="row m-1">
                         <div class="col-md-6">

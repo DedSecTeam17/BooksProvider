@@ -1,10 +1,18 @@
 
 
 
-<ul class="list-group m-2">
-  <li class="list-group-item">Mohammed Elamin</li>
-  <li class="list-group-item">melamin100@yahoo.com</li>
-  <li class="list-group-item">0902649966</li>
-  <li class="list-group-item">Software Developer</li>
-  <li class="list-group-item">sadl dkaj sdas djakjd ans dma sdaknda dasdnmas d skdansd</li>
+<ul class="list-group m-2" *ngIf="load_main_profile_data">
+  <li class="list-group-item">{{profile_data['name']}}</li>
+  <li class="list-group-item">{{profile_data['email']}}</li>
+  <li class="list-group-item" *ngIf="profile_data['profile'].phone_number!==''">{{profile_data['profile'].phone_number}}</li>
+  <li class="list-group-item" *ngIf="profile_data['profile'].job!==''">{{profile_data['profile'].job}}</li>
+  <li class="list-group-item" *ngIf="profile_data['profile'].about!==''">{{profile_data['profile'].about}}</li>
 </ul>
+
+
+
+
+<div *ngIf="!load_main_profile_data" class="text-center" >
+          <span    class="spinner-border spinner-border-md" role="status"> </span>
+
+</div>

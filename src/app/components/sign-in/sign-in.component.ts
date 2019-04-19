@@ -11,6 +11,8 @@ import {Router} from '@angular/router';
 })
 export class SignInComponent implements OnInit {
     registerForm: FormGroup;
+    get f() { return this.registerForm.controls; }
+
     submitted = false;
 
   err:null;
@@ -24,7 +26,6 @@ export class SignInComponent implements OnInit {
       });
   }
 
-    get f() { return this.registerForm.controls; }
 
 
     onSubmit() {
@@ -34,7 +35,7 @@ export class SignInComponent implements OnInit {
        this.authService.SingIn(this.registerForm.value).subscribe((respone)=>{
            console.log(respone)
            this.submitted = false;
-           this.session.setAccessToken(respone.user_token);
+           this.session.setAccessToken(respone['user_token']);
            this.session.saveAccessToken();
            this.router.navigateByUrl('/home');
 

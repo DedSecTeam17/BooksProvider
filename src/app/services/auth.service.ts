@@ -23,11 +23,6 @@ export class AuthService {
         return this.http.post(this.config.mainEndPoint + 'auth', form_data);
     }
 
-    GetUserData(token): Observable<Object> {
-        return this.http.get(this.config.mainEndPoint + 'users', {
-            headers: new HttpHeaders().set('Authorization', `jwt ${token}`),
-        });
-    }
 
 
     PasswordReqest(form_data): Observable<Object> {

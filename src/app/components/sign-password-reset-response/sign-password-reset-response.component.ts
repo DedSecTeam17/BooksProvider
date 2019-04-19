@@ -16,7 +16,7 @@ export class SignPasswordResetResponseComponent implements OnInit {
     resetToken: string;
 
     err: null;
-    message : null;
+    message : string;
 
     constructor(private  activeRoute: ActivatedRoute, private  router: Router, private formBuilder: FormBuilder, private  authService: AuthService, private  session: UserSessionService) {
     }
@@ -37,8 +37,6 @@ export class SignPasswordResetResponseComponent implements OnInit {
         this.activeRoute.queryParams.subscribe((prams) => {
             this.resetToken = prams['token'];
         });
-
-
         this.submitted = true;
         this.authService.PasswordChange(this.registerForm.value, this.resetToken).subscribe((respone) => {
             console.log(respone);
