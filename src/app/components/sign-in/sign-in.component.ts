@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {UserSessionService} from '../../services/user-session.service';
 import {Router} from '@angular/router';
+import {ProfileService} from '../../services/profile.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,7 +17,7 @@ export class SignInComponent implements OnInit {
     submitted = false;
 
   err:null;
-  constructor(private  router : Router ,private formBuilder: FormBuilder, private  authService: AuthService,private  session:UserSessionService) { }
+  constructor(private  profileService : ProfileService ,private  router : Router ,private formBuilder: FormBuilder, private  authService: AuthService,private  session:UserSessionService) { }
 
 
   ngOnInit() {
@@ -37,6 +38,14 @@ export class SignInComponent implements OnInit {
            this.submitted = false;
            this.session.setAccessToken(respone['user_token']);
            this.session.saveAccessToken();
+           this.profileService.getProfileDate().subscribe((response)=>{
+               console.log(response['_id'])
+               this.session.setId(response['_id']);
+               this.session.saveId();
+
+           },(err)=>{
+               console.log(err)
+           });
            this.router.navigateByUrl('/home');
 
        },(err)=>{

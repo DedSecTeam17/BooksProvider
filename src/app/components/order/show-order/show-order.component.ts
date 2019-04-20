@@ -16,6 +16,7 @@ export class ShowOrderComponent implements OnInit {
   ngOnInit() {
     this.order_id=this.activeRoute.snapshot.params['order_id'];
 
+
   }
 
     backToMyOrders(){

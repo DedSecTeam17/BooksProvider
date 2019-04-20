@@ -34,6 +34,7 @@ import  {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ShowBookComponent } from './components/book/show-book/show-book.component';
 import { ChatComponent } from './components/notifications/chat/chat.component';
 import {HttpClientModule} from '@angular/common/http';
+import {BookService} from './services/book.service';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,7 @@ import {HttpClientModule} from '@angular/common/http';
       HttpClientModule
 
   ],
-  providers: [],
+  providers: [BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

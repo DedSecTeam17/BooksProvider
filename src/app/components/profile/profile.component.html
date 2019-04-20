@@ -1,11 +1,11 @@
 <div class="row " style="background-color: #ecf0f1">
 
 
-    <div class="col-md-4 offset-4">
+    <div class="col-md-6 offset-md-3">
         <div class="card m-2">
             <div class="card-body">
                 <div class="text-center">
-                    <img *ngIf="load_image_path===false"  [src]="image_path" width="70" height="70"
+                    <img *ngIf="load_image_path===false"  [src]="image_path" width="80" height="80"
                          class="  rounded-circle m-2" alt="...">
                     <div class="text-center" *ngIf="load_image_path">
                         <span    class="spinner-border spinner-border-sm" role="status"> </span>
@@ -15,23 +15,12 @@
                     <div class="row m-1">
                         <div class="col-md-12">
                             <p class="text text-dark">{{user_name}}</p>
-                            <button (click)="file.click()" class="btn btn-info btn-block"><i *ngIf="upload_image===false" class="fa fa-camera"></i>
+                            <button (click)="file.click()" class="btn  btn-outline-info"><i *ngIf="upload_image===false" class="fa fa-camera"></i>
                                 <span  *ngIf="upload_image"   class="spinner-border spinner-border-sm" role="status"> </span>
                             </button>
                             <input #file type="file" hidden  name="profile_image"  (change)="handleFileInput($event.target.files)">
                         </div>
                     </div>
-                    <hr>
-                    <!---->
-                    <div class="row m-1">
-                        <div class="col-md-6">
-                            <button class="btn btn-dark btn-sm" routerLink="update">Update</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-dark btn-sm" routerLink="index">MyProfile</button>
-                        </div>
-                    </div>
-
                 </div>
 
             </div>
@@ -40,8 +29,16 @@
 </div>
 
 <div class="row">
-
-    <div class="col-md-6 offset-3">
+<!--[class.active]="router.url==='/book/index'"-->
+    <div class="col-md-6 offset-md-3">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link " [class.active]="router.url==='/profile/index'"   routerLink="index">Profile Date</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [class.active]="router.url==='/profile/update'"    routerLink="update">update Profile</a>
+            </li>
+        </ul>
         <router-outlet></router-outlet>
     </div>
 

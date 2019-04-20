@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProfileService} from '../../services/profile.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,7 @@ export class ProfileComponent implements OnInit {
   private  load_image_path=true;
   private  user_name:string;
 
-  constructor(private  profileService : ProfileService) { }
+  constructor(private  profileService : ProfileService,private  router : Router) { }
 
   ngOnInit() {
     this.profileService.getProfileDate().subscribe((respone) => {

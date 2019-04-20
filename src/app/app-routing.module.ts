@@ -48,7 +48,7 @@ const routes: Routes = [
                 path:'index',component:AllBooksComponent
             },
             {
-                path:'update',component:UpdateBookComponent
+                path:'update/:book_id',component:UpdateBookComponent
             },
             {
                 path:'show/:book_id',component:ShowBookComponent

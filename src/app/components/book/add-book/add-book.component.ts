@@ -1,62 +1,93 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {BookService} from '../../../services/book.service';
 
 @Component({
-  selector: 'app-add-book',
-  templateUrl: './add-book.component.html',
-  styleUrls: ['./add-book.component.css']
+    selector: 'app-add-book',
+    templateUrl: './add-book.component.html',
+    styleUrls: ['./add-book.component.css']
 })
 export class AddBookComponent implements OnInit {
 
 
-    book={
-        image: null
+    book = {
+        book_image: null
     };
 
 
+    book_added: boolean = false;
 
 
-    registerForm: FormGroup;
+    addBookForm: FormGroup;
     submitted = false;
-    constructor(private formBuilder: FormBuilder,private  activeRoute:ActivatedRoute) { }
-  ngOnInit() {
+
+    constructor(private  router : Router ,private formBuilder: FormBuilder, private  activeRoute: ActivatedRoute, private  bookService: BookService) {
+    }
+
+    ngOnInit() {
 
 
-      this.registerForm = this.formBuilder.group(
-          {
-          title: ['', Validators.required],
-          author: ['', Validators.required],
-          publish_at: ['', Validators.required],
-          category:['', Validators.required],
-          price:['', [Validators.required]],
-          image:['', Validators.required]
-          });
-  }
-    get f() { return this.registerForm.controls; }
+        this.addBookForm = this.formBuilder.group(
+            {
+                title: ['', Validators.required],
+                author: ['', Validators.required],
+                category_id: ['', Validators.required],
+                publish_at: ['', Validators.required],
+                price: ['', [Validators.required]],
+            });
+    }
+
+    //title:asdsad
+    // author:melamin400@yahoo.com
+    // book_image_path:mohamed
+    // publish_at:test
+    // category_id:test
+    // price:12
+    get f() {
+        return this.addBookForm.controls;
+    }
 
 
     onSubmit() {
         this.submitted = true;
         // stop here if form is invalid
-        if (this.registerForm.invalid) {
+        if (this.addBookForm.invalid) {
 
             return;
         }
 
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+
+        console.log(this.addBookForm.value);
+        this.bookService.addBook(this.addBookForm.value).subscribe(
+            (response) => {
+                console.log(response);
+                this.bookService.uploadBookImage(this.book.book_image, response['_id']).subscribe(
+                    (response) => {
+                        this.submitted=false;
+                        this.router.navigateByUrl('book/index');
+                        console.log(response);
+                    },
+                    (err) => {
+                        this.submitted=false;
+
+                        console.log(err);
+                    }
+                );
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
     }
 
 
 
 
-    handelImage(e){
-        this.book.image=e.item(0);
-        console.log(this.book.image);
+    handleFileInput(files: FileList) {
+        this.book.book_image = files.item(0);
+
     }
-
-
-
 
 
 }
