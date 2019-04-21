@@ -15,131 +15,139 @@
                 <p>{{book['publish_at']}}</p>
             </div>
         </div>
-        <ul class="list-group " *ngIf="!load_reviews">
-            <li class="list-group-item">
-                <div class="row m-1" *ngFor="let review of reviews">
-                    <div class="col-2">
-                        <img src="https://via.placeholder.com/600/#e8ecf1" width="100%" height="100%"
-                             class="img-fluid   rounded-circle m-2" alt="...">
-                    </div>
-                    <div class="col-10" id="comment">
-                        <div class="row">
-                            <div class="col-6">
-                                <p style="color: gray">@Mohammed Elamin</p>
-                            </div>
-                            <div class="col-6">
-                                <p class="text-right"
-                                   style="font-size: xx-small; color: gray; ">{{review['createdAt'] | timeAgo}}</p>
-                            </div>
-                        </div>
+        <div  *ngIf="!load_reviews">
 
-                        <div class="row">
-                            <div class="col-12">
-                                <p style="font-size: large; color: gray; ">{{review['review']}}</p>
-                                <div class="row justify-content-between">
-                                    <button (click)="showReplayFom(reviews.indexOf(review))" class="text-sm btn btn-link">
-                                        replay
-                                    </button>
-                                    <p><i class="fa fa-reply"></i>{{review['replays'].length}}</p>
+
+
+
+                <div class="card m-3" *ngFor="let review of reviews">
+                    <div class="card-body">
+                        <div class="row m-1" >
+                            <div class="col-2">
+                                <img src="https://via.placeholder.com/600/#e8ecf1" width="100%" height="100%"
+                                     class="img-fluid   rounded-circle m-2" alt="...">
+                            </div>
+                            <div class="col-10" id="comment">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p style="color: gray">@Mohammed Elamin</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p class="text-right"
+                                           style="font-size: xx-small; color: gray; ">{{review['createdAt'] | timeAgo}}</p>
+                                    </div>
                                 </div>
 
-                            </div>
-
-                        </div>
-
-                        <div class="ml-1">
-
-
-                            <div *ngIf="current_index===reviews.indexOf(review)">
-                                <div class="row m-1" *ngFor="let replay of review['replays']">
-
+                                <div class="row">
                                     <div class="col-12">
-                                        <div class="needs-validation" novalidate
-                                             *ngIf="current_index_for_replay===replay['_id']  ">
-                                            <form [formGroup]="editReplayForm"
-                                                  (ngSubmit)="onUpdateReplay(review['_id'],replay['_id'])">
-
-                                                <div class="form-group">
-                                                    <input class="form-control" name="replay"
-                                                           formControlName="replay"
-                                                    >
-
-                                                </div>
-                                                <div class="form-inline justify-content-between">
-                                                    <button type="submit" class="btn btn-outline-primary btn-sm">
-                                                        Edit
-                                                    </button>
-
-                                                    <button (click)="cancelEditReplay()" type="submit"
-                                                            class="btn btn-outline-primary btn-sm">
-                                                        Cancel
-                                                    </button>
-
-
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-2" *ngIf="current_index_for_replay!==replay['_id']  ">
-                                        <img src="https://via.placeholder.com/600/#e8ecf1" width="30" height="30"
-                                             class="   rounded-circle " alt="...">
-                                    </div>
-                                    <div *ngIf="current_index_for_replay!==replay['_id']  " class="col-10"
-                                         style="background-color: #eeeeee; border-radius: 20px">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <p style="color: gray">@Mohammed Elamin</p>
-                                            </div>
-                                            <div class="col-6">
-                                                <p class="text-right"
-                                                   style="font-size: xx-small; color: gray; ">{{replay['createdAt'] | timeAgo}}</p>
-                                            </div>
-                                        </div>
-                                        <p style="font-size: small; color: gray">{{replay['replay']}}</p>
-                                        <div class="row justify-content-start">
-                                            <button (click)="showEditReplayForm(replay['_id'])" class="btn btn-link "
-                                                    style="font-size: small">edit
+                                        <p style="font-size: large; color: gray; ">{{review['review']}}</p>
+                                        <div class="row justify-content-between">
+                                            <button (click)="showReplayFom(reviews.indexOf(review))" class="text-sm btn btn-link">
+                                                <i class="fa fa-reply"></i>{{review['replays'].length}}
                                             </button>
-                                            <button (click)="deleteReview(review['_id'],replay['_id'])"
-                                                    class="btn btn-link " style="font-size: small">delete
-                                            </button>
+
                                         </div>
+
                                     </div>
+
                                 </div>
-                            </div>
+
+                                <div class="ml-1">
 
 
-                            <div class="text-right" *ngIf="current_index===reviews.indexOf(review)">
-                                <div class="needs-validation" novalidate>
-                                    <form [formGroup]="replayForm" (ngSubmit)="onReplay(review['_id'])">
-                                        <div class="form-inline justify-content-between">
-                                            <div class="form-group">
-                                                <input class="form-control" name="replay" formControlName="replay"
-                                                >
+                                    <div *ngIf="current_index===reviews.indexOf(review)">
+                                        <div class="row m-1" *ngFor="let replay of review['replays']">
 
+                                            <div class="col-12">
+                                                <div class="needs-validation" novalidate
+                                                     *ngIf="current_index_for_replay===replay['_id']  ">
+                                                    <form [formGroup]="editReplayForm"
+                                                          (ngSubmit)="onUpdateReplay(review['_id'],replay['_id'])">
+
+                                                        <div class="form-group">
+                                                            <input class="form-control" name="replay"
+                                                                   formControlName="replay"
+                                                            >
+
+                                                        </div>
+                                                        <div class="form-inline justify-content-between">
+                                                            <button type="submit" class="btn btn-outline-primary btn-sm">
+                                                                Edit
+                                                            </button>
+
+                                                            <button (click)="cancelEditReplay()" type="submit"
+                                                                    class="btn btn-outline-primary btn-sm">
+                                                                Cancel
+                                                            </button>
+
+
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
-                                            <button type="submit" class="btn btn-outline-info btn-sm">
+
+                                            <div class="col-2" *ngIf="current_index_for_replay!==replay['_id']  ">
+                                                <img src="https://via.placeholder.com/600/#e8ecf1" width="100%" height="100%"
+                                                     class="img-fluid   rounded-circle m-2" alt="...">
+                                            </div>
+                                            <div *ngIf="current_index_for_replay!==replay['_id']  " class="col-10"
+                                                 style="background-color: #eeeeee; border-radius: 20px">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <p style="color: gray">@Mohammed Elamin</p>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <p class="text-right"
+                                                           style="font-size: xx-small; color: gray; ">{{replay['createdAt'] | timeAgo}}</p>
+                                                    </div>
+                                                </div>
+                                                <p style="font-size: small; color: gray">{{replay['replay']}}</p>
+                                                <div class="row justify-content-start">
+                                                    <button (click)="showEditReplayForm(replay['_id'])" class="btn btn-link "
+                                                            style="font-size: small">edit
+                                                    </button>
+                                                    <button (click)="deleteReview(review['_id'],replay['_id'])"
+                                                            class="btn btn-link " style="font-size: small">delete
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="text-right" *ngIf="current_index===reviews.indexOf(review)">
+                                        <hr>
+                                        <div class="needs-validation" novalidate>
+                                            <form [formGroup]="replayForm" (ngSubmit)="onReplay(review['_id'])">
+                                                <div class="form-inline justify-content-between">
+                                                    <div class="form-group">
+                                                        <input class="form-control" name="replay" formControlName="replay"
+                                                        >
+
+                                                    </div>
+                                                    <button type="submit" class="btn btn-outline-info btn-sm">
                                             <span *ngIf="add_replay" class="spinner-border spinner-border-sm"
                                                   role="status"> </span>
-                                                <span *ngIf="!add_replay">Replay</span>
-                                            </button>
+                                                        <span *ngIf="!add_replay">Replay</span>
+                                                    </button>
+                                                </div>
+
+
+                                            </form>
                                         </div>
 
 
-                                    </form>
+                                    </div>
                                 </div>
 
 
                             </div>
                         </div>
-
-
                     </div>
                 </div>
-            </li>
 
-        </ul>
+        </div>
 
     </div>
 </div>

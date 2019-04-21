@@ -37,6 +37,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {BookService} from './services/book.service';
 import {TimeAgoPipe} from 'time-ago-pipe';
 
+import {NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,35 +67,37 @@ import {TimeAgoPipe} from 'time-ago-pipe';
     ShowOrderComponent,
     ShowBookComponent,
     ChatComponent,
-      TimeAgoPipe
+      TimeAgoPipe,
+
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-      BrowserAnimationsModule,
-      MatButtonModule,
-      MatCheckboxModule,
-      MatToolbarModule,
-      MatIconModule,
-      MatMenuModule,
-      MatFormFieldModule,
-      MatSelectModule,
-      MatListModule,
-      MatSidenavModule,
-      MatCardModule,
-      MatGridListModule,
-      MatInputModule,
-      FormsModule,
-      ReactiveFormsModule,
-      MatProgressSpinnerModule,
-      MatProgressBarModule,
-      MatDialogModule,
-      MatDatepickerModule,
-      MatNativeDateModule,
-      NgbModule,
-      HttpClientModule
-
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatListModule,
+    MatSidenavModule,
+    MatCardModule,
+    MatGridListModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgbModule,
+    HttpClientModule,
+    NgbProgressbarModule
   ],
   providers: [BookService],
   bootstrap: [AppComponent]

@@ -1,90 +1,95 @@
 
-
-<div class="card">
-  <div class="card-body">
-    <div class="needs-validation" novalidate>
-      <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" >
-
-
-        <!--TITLE-->
-        <div class="form-group">
-          <label for="name">Title</label>
-          <input class="form-control" placeholder="title" id="name" name="title" type="text"
-                 formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
-
-          <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-            <div *ngIf="f.title.errors.required">Title is required</div>
-          </div>
-        </div>
-
-        <!--Author-->
-        <div class="form-group">
-          <label for="author">Author</label>
-          <input class="form-control" placeholder="author" id="author" name="author" type="text"
-                 formControlName="author" [ngClass]="{ 'is-invalid': submitted && f.author.errors }">
-          <div *ngIf="submitted && f.author.errors" class="invalid-feedback">
-            <div *ngIf="f.author.errors.required">Author is required</div>
-          </div>
-
-        </div>
-
-        <div class="form-group">
-          <label for="publish_at">Publish At</label>
-          <input class="form-control" placeholder="title" id="publish_at" name="publish_at"
-                 type="date"
-                 formControlName="publish_at"
-                 [ngClass]="{ 'is-invalid': submitted && f.publish_at.errors }">
-
-          <div *ngIf="submitted && f.publish_at.errors" class="invalid-feedback">
-            <div *ngIf="f.publish_at.errors.required">Price is required</div>
-
-          </div>
-        </div>
+<div class="row m-2">
+  <div class="col-md-8 offset-md-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="needs-validation" novalidate>
+          <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" >
 
 
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Category</label>
-          <select class="form-control" id="exampleFormControlSelect1" formControlName="category_id"
-                  [ngClass]="{ 'is-invalid': submitted && f.category_id.errors }">
-            <option>5cb9bccca405dc001748feb9</option>
-            <option>5cb9bccca405dc001748feb9</option>
-            <option>5cb9bccca405dc001748feb9</option>
-          </select>
-          <div *ngIf="submitted && f.category_id.errors" class="invalid-feedback">
-            <div *ngIf="f.category_id.errors.required">Category is required</div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Book Image <span   *ngIf="upload_image"  class="spinner-border spinner-border-sm" role="status"> </span> <small *ngIf="!upload_image">{{msg}}</small></label>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Upload Book Image</span>
+            <!--TITLE-->
+            <div class="form-group">
+              <label for="name">Title</label>
+              <input class="form-control" placeholder="title" id="name" name="title" type="text"
+                     formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+
+              <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                <div *ngIf="f.title.errors.required">Title is required</div>
+              </div>
             </div>
-            <div class="custom-file">
-              <input (change)="handleFileInput($event.target.files)" type="file" class="custom-file-input" id="inputGroupFile01"
-              >
-              <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+
+            <!--Author-->
+            <div class="form-group">
+              <label for="author">Author</label>
+              <input class="form-control" placeholder="author" id="author" name="author" type="text"
+                     formControlName="author" [ngClass]="{ 'is-invalid': submitted && f.author.errors }">
+              <div *ngIf="submitted && f.author.errors" class="invalid-feedback">
+                <div *ngIf="f.author.errors.required">Author is required</div>
+              </div>
+
             </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Price</label>
-          <input class="form-control" placeholder="price" id="exampleInputEmail1" name="price"
-                 type="text" formControlName="price"
-                 [ngClass]="{ 'is-invalid': submitted && f.price.errors }">
-          <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
-            <div *ngIf="f.price.errors.required">Price is required</div>
-          </div>
-        </div>
+
+            <div class="form-group">
+              <label for="publish_at">Publish At</label>
+              <input class="form-control" placeholder="title" id="publish_at" name="publish_at"
+                     type="date"
+                     formControlName="publish_at"
+                     [ngClass]="{ 'is-invalid': submitted && f.publish_at.errors }">
+
+              <div *ngIf="submitted && f.publish_at.errors" class="invalid-feedback">
+                <div *ngIf="f.publish_at.errors.required">Price is required</div>
+
+              </div>
+            </div>
 
 
-        <button type="submit" class="btn btn-outline-info btn-block  text-center">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Category</label>
+              <select class="form-control" id="exampleFormControlSelect1" formControlName="category_id"
+                      [ngClass]="{ 'is-invalid': submitted && f.category_id.errors }">
+                <option>5cb9bccca405dc001748feb9</option>
+                <option>5cb9bccca405dc001748feb9</option>
+                <option>5cb9bccca405dc001748feb9</option>
+              </select>
+              <div *ngIf="submitted && f.category_id.errors" class="invalid-feedback">
+                <div *ngIf="f.category_id.errors.required">Category is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Book Image <span   *ngIf="upload_image"  class="spinner-border spinner-border-sm" role="status"> </span> <small *ngIf="!upload_image">{{msg}}</small></label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Upload Book Image</span>
+                </div>
+                <div class="custom-file">
+                  <input (change)="handleFileInput($event.target.files)" type="file" class="custom-file-input" id="inputGroupFile01"
+                  >
+                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Price</label>
+              <input class="form-control" placeholder="price" id="exampleInputEmail1" name="price"
+                     type="text" formControlName="price"
+                     [ngClass]="{ 'is-invalid': submitted && f.price.errors }">
+              <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                <div *ngIf="f.price.errors.required">Price is required</div>
+              </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-outline-info btn-block  text-center">
                             <span *ngIf="submitted" class="spinner-border spinner-border-sm" role="status">
                             </span>
-          <span *ngIf="!submitted">Update</span>
-        </button>
-      </form>
+              <span *ngIf="!submitted">Update</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
     </div>
 
   </div>
 </div>
+

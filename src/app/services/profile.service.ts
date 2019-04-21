@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {MainConfigService} from './main-config.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {UserSessionService} from './user-session.service';
 
@@ -27,12 +27,24 @@ export class ProfileService {
   }
 
 
-  uploadProfileImage(image : File) : Observable<Object>{
+  uploadProfileImage(image : File) :Observable<HttpEvent<any>>  {
+
+
+
     const  formData= new FormData();
     formData.append('profile_image',image);
-    return this.http.post(this.config.mainEndPoint + 'users/profile/upload_profile_image',formData, {
-      headers: new HttpHeaders().set('Authorization', `jwt ${this.session.getAccessToken()}`),
-    });
+
+    const options = {
+      reportProgress: true,
+      headers: new HttpHeaders().set('Authorization', `jwt ${this.session.getAccessToken()}`)
+    };
+    const req = new HttpRequest('POST', this.config.mainEndPoint + 'users/profile/upload_profile_image', formData, options);
+    return this.http.request(req);
+    // return this.http.post(this.config.mainEndPoint + 'users/profile/upload_profile_image',formData,
+    //     {
+    //       reportProgress: true,
+    //   headers: new HttpHeaders().set('Authorization', `jwt ${this.session.getAccessToken()}`),
+    // });
 
   }
 
