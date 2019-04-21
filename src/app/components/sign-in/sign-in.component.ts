@@ -15,6 +15,7 @@ export class SignInComponent implements OnInit {
     get f() { return this.registerForm.controls; }
 
     submitted = false;
+    loading=false;
 
   err:null;
   constructor(private  profileService : ProfileService ,private  router : Router ,private formBuilder: FormBuilder, private  authService: AuthService,private  session:UserSessionService) { }
@@ -31,11 +32,14 @@ export class SignInComponent implements OnInit {
 
     onSubmit() {
       console.log(this.registerForm)
-
         this.submitted = true;
+        if (!this.registerForm.valid)
+            return;
+
+        this.loading=true;
        this.authService.SingIn(this.registerForm.value).subscribe((respone)=>{
            console.log(respone)
-           this.submitted = false;
+           this.loading=false;
            this.session.setAccessToken(respone['user_token']);
            this.session.saveAccessToken();
            this.profileService.getProfileDate().subscribe((response)=>{
@@ -50,6 +54,8 @@ export class SignInComponent implements OnInit {
 
        },(err)=>{
            this.err=err.error;
+           this.loading=false;
+
            console.log(this.err)
            this.submitted = false;
 

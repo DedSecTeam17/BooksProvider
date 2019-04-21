@@ -28,9 +28,9 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block  text-center">
-                            <span *ngIf="submitted" class="spinner-border spinner-border-sm" role="status">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status">
                             </span>
-                            <span *ngIf="!submitted">Sign In</span>
+                            <span *ngIf="!loading">Sign In</span>
                         </button>
                         <a class="nav-link" routerLink="/sign_up">Not have account ? Sign up</a>
                         <a class="nav-link" routerLink="/password_reset">Forget your password ?</a>

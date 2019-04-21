@@ -35,6 +35,7 @@ import { ShowBookComponent } from './components/book/show-book/show-book.compone
 import { ChatComponent } from './components/notifications/chat/chat.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BookService} from './services/book.service';
+import {TimeAgoPipe} from 'time-ago-pipe';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import {BookService} from './services/book.service';
     ShowOrderComponent,
     ShowBookComponent,
     ChatComponent,
+      TimeAgoPipe
 
   ],
   imports: [
