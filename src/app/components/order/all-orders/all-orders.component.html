@@ -4,29 +4,29 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Book Tile</th>
-                <th scope="col">Author</th>
+                <th scope="col">Book</th>
+                <th scope="col">Customer</th>
+                <th scope="col">State</th>
+                <th scope="col">Quantity</th>
                 <th scope="col">Price</th>
-                <th scope="col">Customer Name</th>
-                <!--<th scope="col">Customer phone</th>-->
-                <!--<th scope="col">Quantity</th>-->
-                <!--<th scope="col">Address</th>-->
+                <th scope="col">Created At</th>
+                <th scope="col">LAT</th>
+                <th scope="col">LONG</th>
                 <th scope="col">More Info</th>
 
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let i of list; ">
-                <th scope="row">1</th>
-                <td>Title</td>
-                <td>Author</td>
-                <td>Price</td>
-                <td>Mohammed Elamin</td>
-                <!--<td>09027643827</td>-->
-                <!--<td>12-books</td>-->
-                <!--<td>Khartoum Sudan</td>-->
-                <td><button (click)="showOrder(i)" class="btn btn-info">More Info</button></td>
+            <tr *ngFor="let order of orders; ">
+                <td>{{order.book_id}}</td>
+                <td>{{order.customer_id}}</td>
+                <td>{{order.State}}</td>
+                <td>{{order.quantity}}</td>
+                <td>{{order.total_price}}</td>
+                <td>{{order.createdAt | timeAgo}}</td>
+                <td>{{order.user_location.lat}}</td>
+                <td>{{order.user_location.long}}</td>
+                <td><button (click)="showOrder(order._id)" class="btn btn-info">More Info</button></td>
 
             </tr>
 

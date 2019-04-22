@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {OrderService} from '../../../services/order.service';
+import {Order} from '../../../models/Order';
 
 
 
@@ -13,37 +15,24 @@ import {Router} from '@angular/router';
 })
 export class AllOrdersComponent implements OnInit {
 
-    list=[
-        {
-          name:'asd'
-        },
-        {
-            name:'asd'
-        },{
-            name:'asd'
-        },{
-            name:'asd'
-        },{
-            name:'asd'
-        },{
-            name:'asd'
-        },{
-            name:'asd'
-        },{
-            name:'asd'
-        },{
-            name:'asd'
-        },
-    ];
 
-  constructor(private  router : Router) { }
+
+    private orders : Order[];
+  constructor(private  router : Router,private  orderService : OrderService) { }
 
   ngOnInit() {
+
+      this.orderService.allOrders().subscribe((response)=>{
+          this.orders=response;
+      },(err)=>{})
   }
 
-    showOrder(i){
+    showOrder(id){
 
-    this.router.navigateByUrl(`order/show/${this.list.indexOf(i)}`)
+    this.router.navigateByUrl(`order/show/${id}`)
     }
 
 }
+
+
+

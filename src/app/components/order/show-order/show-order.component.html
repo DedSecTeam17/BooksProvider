@@ -5,25 +5,31 @@
     </div>
 </div>
 
-<div class="row">
+
+
+<div class="text-center m-2">
+    <span   *ngIf="load_order"  class="spinner-border spinner-border-sm" role="status"> </span>
+
+</div>
+<div class="row" *ngIf="!load_order">
 
 
     <div class="col-md-4 offset-4">
 
 
         <ul class="list-group m-2">
-            <li class="list-group-item">Order Id{{order_id}}</li>
-            <li class="list-group-item">Mohammed Elamin</li>
-            <li class="list-group-item">melamin100@yahoo.com</li>
-            <li class="list-group-item">12 Books</li>
-            <li class="list-group-item">Sudan khartoum</li>
-            <li class="list-group-item">Author</li>
-            <li class="list-group-item">Title</li>
-            <li class="list-group-item">Price</li>
+            <li class="list-group-item">{{order._id}}</li>
+            <li class="list-group-item">{{order.provider_id}}</li>
+            <li class="list-group-item">{{order.customer_id}}</li>
+            <li class="list-group-item">{{order.book_id}}</li>
+            <li class="list-group-item">{{order.user_location.lat}}</li>
+            <li class="list-group-item">{{order.user_location.long}}</li>
+            <li class="list-group-item">{{order.total_price}}</li>
+            <li class="list-group-item">{{order.createdAt | timeAgo}}</li>
             <li class="list-group-item">
                 <div class="form-inline justify-content-between">
-                    <button class="btn btn-success">Accept</button>
-                    <button class="btn btn-danger">Reject</button>
+                    <button (click)="acceptOrder(order._id)" class="btn btn-success">Accept</button>
+                    <button  (click)="rejectOrder(order_id)"  class="btn btn-danger">Reject</button>
 
                 </div>
             </li>

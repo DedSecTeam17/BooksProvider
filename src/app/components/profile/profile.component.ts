@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProfileService} from '../../services/profile.service';
 import {Router} from '@angular/router';
-import Any = jasmine.Any;
 
 @Component({
   selector: 'app-profile',
