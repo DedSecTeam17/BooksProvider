@@ -23,7 +23,12 @@ export class OrderService {
     return this.http.get(this.config.mainEndPoint + `orders/${order_id}`, );
 
   }
+  deleteOrder(order_id)  : Observable<Object>{
+    return this.http.delete(this.config.mainEndPoint + `orders/${order_id}`,{
+      headers: new HttpHeaders().set('Authorization', `jwt ${this.session.getAccessToken()}`)
 
+    });
+  }
   updateOrder(order_id,state) : Observable<Object>{
     return this.http.put(this.config.mainEndPoint + `orders/${order_id}`, {State:state},{
       headers: new HttpHeaders().set('Authorization', `jwt ${this.session.getAccessToken()}`)
@@ -31,12 +36,7 @@ export class OrderService {
 
   }
 
-  deleteOrder(order_id)  : Observable<Object>{
-    return this.http.delete(this.config.mainEndPoint + `orders/${order_id}`,{
-      headers: new HttpHeaders().set('Authorization', `jwt ${this.session.getAccessToken()}`)
 
-    });
-  }
 
 
 }

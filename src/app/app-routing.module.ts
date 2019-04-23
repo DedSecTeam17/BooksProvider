@@ -71,7 +71,7 @@ const routes: Routes = [
         path:'notification',component:NotificationsComponent,canActivate: [AuthGuardService],
         children:[
             {
-                path:'chat/:notification_id',component:ChatComponent
+                path:'chat/:customer_id',component:ChatComponent
             }
         ]
     },
